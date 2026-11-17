@@ -17,7 +17,9 @@ class _LoginScreenState extends State<LoginScreen> {
   bool hidePassword = true;
 
   void login() {
-    if (!formKey.currentState!.validate()) return;
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
 
     final isValid = DemoAuth.login(
       usernameController.text.trim(),
@@ -32,7 +34,9 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Invalid username or password.')),
+        const SnackBar(
+          content: Text('Invalid username or password.'),
+        ),
       );
     }
   }
