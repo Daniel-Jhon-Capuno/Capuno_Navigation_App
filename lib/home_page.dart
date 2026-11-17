@@ -1,13 +1,33 @@
 import 'package:flutter/material.dart';
+import 'demo_auth.dart';
+import 'login_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
+  void logout(BuildContext context) {
+    DemoAuth.logout();
+
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => const LoginScreen(),
+      ),
+      (route) => false,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        actions: [
+          IconButton(
+            onPressed: () => logout(context),
+            icon: const Icon(Icons.logout),
+            tooltip: 'Logout',
+          ),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(24),
@@ -55,7 +75,7 @@ class HomePage extends StatelessWidget {
                   leading: Icon(Icons.share),
                   title: Text('Social Media'),
                   subtitle: Text(
-                    'View your sample social accounts.',
+                    'View and create posts in the student feed.',
                   ),
                 ),
               ],

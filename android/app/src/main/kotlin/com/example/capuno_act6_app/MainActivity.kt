@@ -1,4 +1,4 @@
-package com.example.capuno_navigation_app
+package com.example.capuno_act6_app
 
 import io.flutter.embedding.android.FlutterActivity
 
